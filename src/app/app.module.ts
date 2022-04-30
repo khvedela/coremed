@@ -14,7 +14,6 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {CommonModule} from "@angular/common";
-import {SkeletonModule} from 'primeng/skeleton';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import {SkeletonModule} from 'primeng/skeleton';
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    SkeletonModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
