@@ -1,0 +1,28 @@
+<main>
+  <p-card>
+    <div>
+      <div class="flex align-items-center justify-content-start" style="gap: 2rem">
+        <p-avatar label="P" pBadge value="doctor" severity="danger" size="large"></p-avatar>
+        <div>
+          <h3>David Khvedelidze</h3>
+          <h6>{{ date}}</h6>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="content">
+      <h3>{{title}}</h3>
+      <p>
+        {{content}}
+      </p>
+      <hr>
+      <div class="image">
+        <img src="https://via.placeholder.com/1920x1080">
+      </div>
+    </div>
+    <div class="flex justify-content-around" style="gap: 1rem">
+      <button pButton pRipple type="button" label="Like" class="p-button-raised p-button-secondary p-button-text"><i [ngClass]="test ? 'pi pi-heart-fill' : 'pi pi-heart'" style="font-size: 1.5rem"></i></button>
+      <button pButton pRipple type="button" label="Comments" class="p-button-raised p-button-secondary p-button-text"><i class="pi pi-comments" style="font-size: 1.5rem"></i></button>
+    </div>
+  </p-card>
+</main>

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {Firestore, collectionData, collection, setDoc, doc} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import {Post} from "../../../interfaces/post";
 
 @Component({
   selector: 'app-home',
@@ -8,16 +10,21 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 })
 export class HomeComponent implements OnInit {
 
-  listOfUsers: any[] = [];
+  posts: Observable<any[]>;
+  text2: any;
 
-  constructor(private db: AngularFirestore) {
-    const things = db.collection('posts').valueChanges();
-    things.subscribe((data) => {
-      this.listOfUsers.push(data)
-      console.log(this.listOfUsers);
-    });
+  test: boolean = true
+
+  constructor(public firestore: Firestore) {
+    const collections = collection(firestore, 'posts');
+    this.posts = collectionData(collections);
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    // await setDoc(doc(this.firestore, "cities", "LA"), {
+    //   name: "Los Angeles",
+    //   state: "CA",
+    //   country: "USA"
+    // });
   }
 }

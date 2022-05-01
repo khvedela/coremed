@@ -1,6 +1,34 @@
-<!--<p-skeleton *ngIf="listOfUsers"></p-skeleton>-->
-<ul>
-  <li *ngFor="let user of listOfUsers; let i = index">
-    {{user[i].name}}
-  </li>
-</ul>
+<main>
+  <p-card>
+    <div class="p-card-header">
+      <p-avatar label="P" size="large" shape="circle"></p-avatar>
+      <span>What's on your mind, NAME HERE ?</span>
+    </div>
+    <hr>
+    <ng-template pTemplate="footer">
+      <button pButton pRipple type="button" label="Feeling/Activity" class="p-button-raised p-button-secondary p-button-text"><i class="pi pi-user"></i></button>
+      <button pButton pRipple type="button" label="Photo/Video" class="p-button-raised p-button-secondary p-button-text"><i class="pi pi-camera"></i></button>
+    </ng-template>
+  </p-card>
+
+  <app-post
+    *ngFor="let post of posts | async"
+    [title]="post.title"
+    [content]="post.content"
+    [date]="post.date"
+  ></app-post>
+<!--  <app-post-->
+<!--    [title]="'what a wonderful day'"-->
+<!--  ></app-post>-->
+</main>
+
+<!--<ul *ngFor="let item of posts | async">-->
+<!--  <li> {{ item.title }} </li>-->
+<!--  <li>{{ item.content }} </li>-->
+<!--  <li>{{ item.imgUrl }} </li>-->
+<!--  <img [src]="item.imgUrl" width="100" height="100" alt="">-->
+<!--  <li>{{ item.owner }} </li>-->
+<!--  <li>{{ item.date }} </li>-->
+<!--  <li>{{ item.like }} </li>-->
+<!--  <li>{{ item.comments }} </li>-->
+<!--</ul>-->
