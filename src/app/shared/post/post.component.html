@@ -5,7 +5,7 @@
         <p-avatar label="P" pBadge value="doctor" severity="danger" size="large"></p-avatar>
         <div>
           <h3>David Khvedelidze</h3>
-          <h6>{{ date}}</h6>
+          <p style="margin: 0; padding: 0">{{ convertFromTimeStamp(date) | date:'MM/dd h:mm a' }}</p>
         </div>
       </div>
     </div>
@@ -20,9 +20,19 @@
         <img src="https://via.placeholder.com/1920x1080">
       </div>
     </div>
-    <div class="flex justify-content-around" style="gap: 1rem">
-      <button pButton pRipple type="button" label="Like" class="p-button-raised p-button-secondary p-button-text"><i [ngClass]="test ? 'pi pi-heart-fill' : 'pi pi-heart'" style="font-size: 1.5rem"></i></button>
-      <button pButton pRipple type="button" label="Comments" class="p-button-raised p-button-secondary p-button-text"><i class="pi pi-comments" style="font-size: 1.5rem"></i></button>
+    <div class="comment-section" style="gap: 1rem; margin-top: 1rem">
+      <button pButton pRipple type="button" [pTooltip]="likes()" tooltipPosition="bottom" label="Like" class="p-button p-button-secondary p-button-text"><i pBadge value="{{like.length}}" severity="danger" [ngClass]="test ? 'pi pi-heart-fill' : 'pi pi-heart'" style="font-size: 1.5rem"></i></button>
+      <button pStyleClass="@next" toggleClass="dk-display-none" pButton pRipple type="button" label="Comments" class="p-button p-button-secondary p-button-text"><i class="pi pi-comment" style="font-size: 1.5rem"></i></button>
+      <div class="comments dk-display-none">
+      <div class="comment-container" *ngFor="let comment of comments | keyvalue">
+        <p-avatar label="C" size="large"></p-avatar>
+        <div class="comment">
+          <h6>{{comment.key}}</h6>
+          <p>{{comment.value}}</p>
+<!--          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos facilis iusto, nihil odit qui repellendus temporibus totam veniam. Ad culpa itaque nam quasi voluptatibus? Ab corporis nisi ratione tempora ullam!</p>-->
+        </div>
+      </div>
+      </div>
     </div>
   </p-card>
 </main>

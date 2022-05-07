@@ -1,0 +1,15 @@
+<div class="flex justify-content-center align-items-center" style="height: 80vh">
+  <p-card>
+    <ng-template pTemplate="header">
+      <img
+        style="width: 300px"
+        src="assets/undraw_secure_login_pdn4.svg">
+    </ng-template>
+    <ng-template pTemplate="content">
+      <h3>Login</h3>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <a (click)="authService.FacebookAuth()" class="social-button" id="facebook-connect"> <span>Connect with Facebook</span></a>
+    </ng-template>
+  </p-card>
+</div>

@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   posts: Observable<any[]>;
   text2: any;
 
-  test: boolean = true
+  test: boolean = false
 
   constructor(public firestore: Firestore) {
     const collections = collection(firestore, 'posts');

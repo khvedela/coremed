@@ -1,0 +1,140 @@
+main {
+  padding: 0 55px 0 55px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .user-menu {
+    position: absolute;
+    width: 62px;
+    height: 83px;
+    left: calc(100% - 62px);
+    top: 228px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 0px 0px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+  }
+
+  .logo {
+    width: 159px;
+    height: 71px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 10px 10px;
+    user-select: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 250ms ease-in-out;
+
+    h1 {
+      font-family: 'Poppins';
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 36px;
+    }
+  }
+
+  .burger {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    cursor: pointer;
+    transition: 150ms cubic-bezier(0.42, 0, 1, 1);
+
+    .line {
+      width: 60px;
+      height: 8px;
+      background-color: #212529;
+      border-radius: 10px;
+      transition: 150ms cubic-bezier(0.42, 0, 1, 1);
+    }
+  }
+
+  .opened {
+    z-index: 999999999;
+    .line {
+      top: 40px;
+      right: 55px;
+      position: absolute;
+    }
+
+    .line-middle {
+      //width: 0;
+      background-color: transparent;
+    }
+
+    .line-top {
+      transform: rotate(45deg);
+    }
+
+    .line-bottom {
+      transform: rotate(-45deg);
+    }
+
+  }
+}
+
+section {
+  position: absolute;
+  background: rgba( 255, 255, 255, 0.35 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 12px );
+  -webkit-backdrop-filter: blur( 12px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+
+  z-index: 999999999;
+
+  .feed,
+  .portal {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    user-select: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 15px 20px;
+
+    h1 {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 800;
+      font-size: 96px;
+      line-height: 144px;
+    }
+
+    &:hover {
+      background-color: #ECEFF1;
+      border-radius: 10px;
+      transition: 150ms ease-in-out;
+      transform: scale(1.01);
+    }
+  }
+
+  .line-between {
+    width: 2px;
+    height: 95px;
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+

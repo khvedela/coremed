@@ -22,18 +22,32 @@ import {AvatarGroupModule} from 'primeng/avatargroup';
 import {BadgeModule} from 'primeng/badge';
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
-
+import { LoginComponent } from './auth/login/login.component';
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AuthGuard} from "@angular/fire/auth-guard";
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from "primeng/api";
+import { VerifyEmailAddressComponent } from './auth/verify-email-address/verify-email-address.component';
+import {MenubarModule} from 'primeng/menubar';
+import {SharedModule} from "./shared/shared.module";
+import {TooltipModule} from 'primeng/tooltip';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
     AppComponent,
     InfoComponent,
+    LoginComponent,
+    VerifyEmailAddressComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     NgbModule,
@@ -48,8 +62,14 @@ import {RippleModule} from "primeng/ripple";
     BadgeModule,
     ButtonModule,
     RippleModule,
+    AngularFireAuthModule,
+    ToastModule,
+    MenubarModule,
+    SharedModule,
+    TooltipModule,
+    BrowserAnimationsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard, MessageService],
   exports: [],
   bootstrap: [AppComponent]
 })

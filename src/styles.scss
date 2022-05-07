@@ -10,3 +10,11 @@
   justify-content: space-between;
   gap: 1rem;
 }
+
+.dk-display-none {
+  display: none;
+}
+
+:host ::ng-deep p-menubarsub {
+  width: 100%;
+}
