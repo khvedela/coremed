@@ -9,6 +9,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav',
@@ -24,10 +25,10 @@ import {
         opacity: 0
       })),
       transition('open => closed', [
-        animate('300ms cubic-bezier(0.42, 0, 1, 1)')
+        animate('150ms cubic-bezier(0.42, 0, 1, 1)')
       ]),
       transition('closed => open', [
-        animate('300ms cubic-bezier(0.42, 0, 1, 1)')
+        animate('150ms cubic-bezier(0.42, 0, 1, 1)')
       ]),
     ]),
   ],
@@ -39,7 +40,7 @@ export class NavComponent implements OnInit {
   isLoggedIn: boolean = this.auth.isLoggedIn;
   status: boolean = false;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -69,4 +70,8 @@ export class NavComponent implements OnInit {
     this.status = !this.status
   }
 
+  changeRoute(route: string) {
+    this.router.navigate([route])
+      .then(() => this.status = false);
+  }
 }

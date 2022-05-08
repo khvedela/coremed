@@ -11,6 +11,8 @@
     </ng-template>
   </p-card>
 
+  <p-progressSpinner *ngIf="(posts | async)?.length == 0"></p-progressSpinner>
+
   <app-post
     *ngFor="let post of posts | async"
     [title]="post.title"

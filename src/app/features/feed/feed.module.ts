@@ -13,6 +13,7 @@ import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {ScrollTopModule} from "primeng/scrolltop";
 import {SharedModule} from "../../shared/shared.module";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 const routes: Routes = [
   {
@@ -38,7 +39,8 @@ const routes: Routes = [
         ButtonModule,
         RippleModule,
         ScrollTopModule,
-        SharedModule
+        SharedModule,
+        ProgressSpinnerModule
     ],
   exports: [RouterModule]
 })

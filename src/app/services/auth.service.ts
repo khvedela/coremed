@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
-import { FacebookAuthProvider } from "firebase/auth";
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {Injectable} from '@angular/core';
+import {FacebookAuthProvider} from "firebase/auth";
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {Router} from "@angular/router";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {MessageService} from "primeng/api";
+import {collection, collectionData, Firestore} from "@angular/fire/firestore";
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ import {MessageService} from "primeng/api";
 export class AuthService {
   userData: any;
 
-  constructor(public auth: AngularFireAuth, public router: Router, public afs: AngularFirestore, private messageService: MessageService) {
+  constructor(public auth: AngularFireAuth, public router: Router, public afs: AngularFirestore, private messageService: MessageService, public firestore: Firestore) {
     this.auth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -25,17 +27,17 @@ export class AuthService {
   }
 
   FacebookAuth() {
-    this.messageService.add({severity:'success', summary:'authentication', detail:'successfully logged in'});
-    return this.auth.signInWithPopup( new FacebookAuthProvider() )
+    this.messageService.add({severity: 'success', summary: 'authentication', detail: 'successfully logged in'});
+    return this.auth.signInWithPopup(new FacebookAuthProvider())
       .then((res) => {
         console.log(res);
-        if(!res.user?.emailVerified) this.SendVerificationMail();
+        if (!res.user?.emailVerified) this.SendVerificationMail();
         this.SetUserData(res.user);
         this.router.navigate(['feed'])
           .then(() => window.location.reload());
       }, (err) => {
         alert(err.message);
-        });
+      });
   }
 
   get isLoggedIn(): boolean {
@@ -79,5 +81,10 @@ export class AuthService {
       this.router.navigate(['login'])
         .then(() => window.location.reload());
     });
+  }
+
+  getUsers() {
+    const collections = collection(this.firestore, 'users');
+    return collectionData(collections);
   }
 }

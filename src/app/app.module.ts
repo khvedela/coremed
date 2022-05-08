@@ -33,6 +33,7 @@ import {MenubarModule} from 'primeng/menubar';
 import {SharedModule} from "./shared/shared.module";
 import {TooltipModule} from 'primeng/tooltip';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MenubarModule,
     SharedModule,
     TooltipModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ProgressSpinnerModule
   ],
   providers: [AuthService, AuthGuard, MessageService],
   exports: [],
