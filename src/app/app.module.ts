@@ -34,6 +34,9 @@ import {SharedModule} from "./shared/shared.module";
 import {TooltipModule} from 'primeng/tooltip';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { PhoneComponent } from './info/phone/phone.component';
+import { TextComponent } from './info/text/text.component';
+import { WavesComponent } from './info/waves/waves.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     InfoComponent,
     LoginComponent,
     VerifyEmailAddressComponent,
+    PhoneComponent,
+    TextComponent,
+    WavesComponent,
   ],
   imports: [
     CommonModule,
